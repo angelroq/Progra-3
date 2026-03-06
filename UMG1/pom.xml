@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Archivo de configuración de Maven para el proyecto UMG1 -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <!-- Versión del modelo de Maven -->
+    <modelVersion>4.0.0</modelVersion>
+    
+    <!-- Información del proyecto -->
+    <groupId>Angel</groupId> <!-- Identificador del grupo del proyecto -->
+    <artifactId>UMG1</artifactId> <!-- Identificador del artefacto del proyecto -->
+    <version>1.0-SNAPSHOT</version> <!-- Versión del proyecto -->
+    <packaging>jar</packaging> <!-- Tipo de empaquetado del proyecto -->
+    
+    <!-- Propiedades del proyecto -->
+    <properties>
+        <!-- Codificación de caracteres del proyecto -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Versión del compilador de Java -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <!-- Clase principal del proyecto -->
+        <exec.mainClass>Vista.Principal</exec.mainClass>
+    </properties>
+    
+    <!-- Dependencias del proyecto -->
+    <dependencies>
+        <!-- Conector de MySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.30</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -52,7 +52,7 @@ public class Principal {
        EmpresaDAO empresadao4 = new EmpresaDAO();
        List<Empresa> empresas = empresadao4.select();
        for (Empresa lista : empresas) {
-       System.out.println(lista.toString());
+       System.out.println(lista.toString());    
 }
        
         

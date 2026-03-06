@@ -26,31 +26,31 @@ public class VendedorDAO {
     private static final String SQL_QUERY = "SELECT id_vendedor, nombrevendedor, direvendedor FROM vendedor WHERE id_vendedor = ?";
 
     public List<Vendedor> select() {
-        Connection conn = null;
+        Connection conn = null; //Se reserva memoria
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Vendedor vendedor = null;
         List<Vendedor> vendedores = new ArrayList<Vendedor>();
 
         try {
-            conn = Conexion.getConnection();
-            stmt = conn.prepareStatement(SQL_SELECT);
-            rs = stmt.executeQuery();
-            while (rs.next()) {
-                int id_vendedor = rs.getInt("id_vendedor");
+            conn = Conexion.getConnection();//Abre base de datos
+            stmt = conn.prepareStatement(SQL_SELECT);//Preparar instrucción para ser ejecutada en base de datos
+            rs = stmt.executeQuery(); //rs (record set) un set de datos 
+            while (rs.next()) {//Mientras hayan datos 
+                int id_vendedor = rs.getInt("id_vendedor"); //Campo de la base de datos
                 String nombre = rs.getString("nombrevendedor");
                 String direccion = rs.getString("direvendedor");
                 
-                vendedor = new Vendedor();
+                vendedor = new Vendedor(); //Crea un objeto
                 vendedor.setId_vendedor(id_vendedor);
                 vendedor.setNombreVendedor(nombre);
                 vendedor.setDireVendedor(direccion);
                 
-                vendedores.add(vendedor);
+                vendedores.add(vendedor);//Se agrega a la lista
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
+            ex.printStackTrace(System.out);//Excepciones
         } finally {
             Conexion.close(rs);
             Conexion.close(stmt);
@@ -67,12 +67,12 @@ public class VendedorDAO {
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, vendedor.getNombreVendedor());
-            stmt.setString(2, vendedor.getDireVendedor());
+            stmt.setString(1, vendedor.getNombreVendedor());//colocar datos en comodines
+            stmt.setString(2, vendedor.getDireVendedor());//Colocar datos en comodines
 
 
-            System.out.println("ejecutando query:" + SQL_INSERT);
-            rows = stmt.executeUpdate();
+            System.out.println("ejecutando query:" + SQL_INSERT);//Cambia datos de comodines
+            rows = stmt.executeUpdate();//Colocar en base de datos
             System.out.println("Registros afectados:" + rows);
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
